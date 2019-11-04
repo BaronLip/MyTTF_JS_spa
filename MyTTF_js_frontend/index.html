@@ -9,22 +9,39 @@
 
 </head>
 <body>
-    <h1>—MyTTF—</h1>
+    <!-- Creating a general HTML structure. -->
+    <header>
+        <div id="nav-bar">
+            <h1>—MyTTF—</h1> 
+            
+            <nav id="nav-links">
+                <ul>
+                    <li></li>
+                </ul>
+            </nav>
+        </div>
+        
+    </header>
 
-    <div class="container">
+    <div id="profile container ">
+    </div>
+    
+    <div id="matches-container">
         <form id="new-match-form" action="">
-            <label for="new-match-form">Add a match</label>
-            <input type="text">
+            <label for="match">Add a match</label>
+            <br>
+            <input type="text" name="match">
+            <br>
             <input type="submit">
         </form>
 
-        <div class="matches-container">
-
+        <div id="all-matches">
+            <!-- Add all matches info into this container. -->
         </div>
-    
-    
-    
     </div>
+    
+    
+    
     
 
     <script src="src/index.js"></script>
