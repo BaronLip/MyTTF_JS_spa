@@ -1,9 +1,16 @@
-document.addEventListener("DOMContentLoaded", launchApp)
+document.addEventListener("DOMContentLoaded", playerPage)
 
-function launchApp() {
+function playerPage() {
+    fetch("http://localhost:3000/api/players/1")
+    // How would you beable to fetch from a dynamic URL?
+    .then(function(response) {
+        return response.json()
+    })
+    .then(function(data) {
+        console.log(data);
         
-    
-    fetch
+    })
+
 }
 
 // document.getElementById("new-match-form").addEventListener("submit", newMatch)
