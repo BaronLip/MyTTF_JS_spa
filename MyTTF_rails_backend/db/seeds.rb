@@ -10,13 +10,13 @@ players = Player.create([
     {
     username: "Baron",
     age: 39,
-    gender: "male"
+    gender: "male",
     hand: "right",
     style: "all around attacker",
     blade: "Yasaka Galaxya Carbon",
     red_rubber: "Rakza 7",
     black_rubber: "Rakza 7",
-    email: "baron@baron.com"
+    email: "baron@baron.com",
     rating: 1700,
     wins: 0,
     losses: 0
