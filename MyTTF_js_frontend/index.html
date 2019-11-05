@@ -45,11 +45,17 @@
         <div class="row">
             <div class="col-sm">
                 <form id="new-match-form" action="http://localhost:3000/matches">
-                    <input type="hidden" name="player_id">
                     <label for="match">Add a match</label>
                     <br>
+                    <input type="hidden" name="player_id">
+                    <input type="text" name="" id="title">
+                    <textarea name="" id="notes" cols="20" rows="5">
+                    </textarea>
+                    
                     <input type="text" name="title">
                     <br>
+
+
                     <input type="submit">
                 </form>
             </div>
