@@ -93,6 +93,9 @@ document.getElementById("new-match-form").addEventListener("submit", newMatch)
 function newMatch(e) {
     e.preventDefault();
     // console.log("hello")
+    
+
+
     fetch("localhost:3000/api/matches", {
         method: "post",
         headers: {
