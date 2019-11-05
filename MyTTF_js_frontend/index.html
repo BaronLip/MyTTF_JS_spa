@@ -42,20 +42,27 @@
     </div>
     
     <div id="matches-container" class="container">
-        <form id="new-match-form" action="">
-            <label for="match">Add a match</label>
-            <br>
-            <input type="text" name="match">
-            <br>
-            <input type="submit">
-        </form>
-
-        <div id="all-matches" >
-            <!-- Add all matches info into this container. -->
+        <div class="row">
+            <div class="col-sm">
+                <form id="new-match-form" action="http://localhost:3000/matches">
+                    <input type="hidden" name="player_id">
+                    <label for="match">Add a match</label>
+                    <br>
+                    <input type="text" name="title">
+                    <br>
+                    <input type="submit">
+                </form>
+            </div>
+            <div id="col-sm all-matches" >
+                <!-- Add all matches info into this container. -->
+            </div>
         </div>
     </div>
     
-    
+
+
+
+    <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

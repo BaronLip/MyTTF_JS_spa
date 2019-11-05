@@ -916,3 +916,19 @@ Processing by Api::PlayersController#show as */*
 Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 1.3ms)
 
 
+Started GET "/api/players/1" for ::1 at 2019-11-04 23:52:48 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (2.4ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-05 09:50:19 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (7.8ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 19.4ms)
+
+
