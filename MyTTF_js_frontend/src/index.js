@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", playerPage)
-
+const player_id = 1
 function playerPage() {
-    fetch("http://localhost:3000/api/players/1")
+    fetch(`http://localhost:3000/api/players/${player_id}`)
     // How would you beable to fetch from a dynamic URL?
     .then(function(response) {
         return response.json()
     })
     .then(function(player) {
-        console.log(player);
-        createPlayer(player);
+        console.log(player)
+        renderPlayer(player);
     })
 
-    function createPlayer(player) {
+    function renderPlayer(player) {
         const profileInfoDiv = document.getElementsByClassName("profile-info")
         // create Player profile based on player.
         
@@ -56,7 +56,6 @@ function playerPage() {
 
         const style = document.createElement("p")
         style.innerText = `style: ${player.style}`
-
         
         profileStatsDiv[0].appendChild(statsHeader)
         profileStatsDiv[0].appendChild(wins)
@@ -79,31 +78,56 @@ function playerPage() {
         const blackRubber = document.createElement("p")
         blackRubber.innerText = `black rubber: ${player.black_rubber}`
         
-        profileEquipDiv[0].appendChild(equipHeader)
-        profileEquipDiv[0].appendChild(blade)
-        profileEquipDiv[0].appendChild(redRubber)
-        profileEquipDiv[0].appendChild(blackRubber)
+        profileEquipDiv[0].appendChild(equipHeader);
+        profileEquipDiv[0].appendChild(blade);
+        profileEquipDiv[0].appendChild(redRubber);
+        profileEquipDiv[0].appendChild(blackRubber);
     }
 
+    // function PlayerMatches(matchesArray) {
+    //     const allMatchesDiv = document.getElementById("all-matches")
+
+    //     fetch(`http://localhost:3000/api/player/${player_id}/matches`)
+    //         .then(function (response) {
+    //             return response.json()
+    //         })
+    //         .then(function (matches) {
+    //             console.log(playerMatches);
+    //             renderPlayerMatches(matches);
+    //         })
+
+
+    // } 
 }
 
 document.getElementById("new-match-form").addEventListener("submit", newMatch)
 
-
 function newMatch(e) {
     e.preventDefault();
     // console.log("hello")
-    
+    const title = e.target.title.value
+    const notes = e.target.notes.value
+    console.log(title)
+    console.log(notes)
+    console.log(player_id)
 
-
-    fetch("localhost:3000/api/matches", {
-        method: "post",
+    fetch(`http://localhost:3000/api/players/${player_id}/matches`, {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            name: e.match.value
+            // Due to strong params in matches_controller, "match_params", create a match object first. Then, add the attributes to the keys.
+            match: {
+                title: title,
+                notes: notes,
+                player_id: player_id
+            }
         })
-
     })
+    .then((response) => response.json())
+    // Make sure to render out the match.
+    .then((match) => console.log(match))
+    .catch((error) => console.log(error))
 }
+

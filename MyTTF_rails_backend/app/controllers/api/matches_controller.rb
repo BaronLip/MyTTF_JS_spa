@@ -1,4 +1,4 @@
-class MatchesController < ApplicationController
+class Api::MatchesController < ApplicationController
 
     def index
         matches = Match.all
@@ -8,13 +8,13 @@ class MatchesController < ApplicationController
 
     def show
         match = Match.find_by(:id => params[:id])
-    
+        
         render json: match, status: 200
     end
 
     def create
         match = Match.create(match_params)
-
+        
         render json: match, status: 200
     end
 
@@ -28,7 +28,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:body)
+        params.require(:match).permit(:notes, :title, :player_id)
     end
 
 end

@@ -8,8 +8,8 @@ class Api::PlayersController < ApplicationController
 
     def show
         player = Player.find_by(:id => params[:id])
-    
-        render json: player, status: 200
+            
+        render :json => player, status: 200
     end
 
     def create

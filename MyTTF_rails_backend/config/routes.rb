@@ -1,10 +1,8 @@
-Rails.application.routes.draw do
-  resources :matches
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+Rails.application.routes.draw do  
     namespace :api do
-        resources :players
-  
+        resources :players do 
+            resources :matches
+        end
     end
-
 end

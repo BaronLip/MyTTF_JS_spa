@@ -16,12 +16,12 @@
     <header>
         <div id="nav-bar" class="container">
             <h1>—MyTTF—</h1> 
-            
-            <nav id="nav-links">
+            <!-- Add Nav links here in the future. -->
+            <!-- <nav id="nav-links">
                 <ul>
                     <li></li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
         
     </header>
@@ -44,23 +44,25 @@
     <div id="matches-container" class="container">
         <div class="row">
             <div class="col-sm">
+                <h3>Add a match:</h3>
                 <form id="new-match-form" action="http://localhost:3000/matches">
-                    <label for="match">Add a match</label>
+                    <label for="title">Title:</label>
                     <br>
-                    <input type="hidden" name="player_id">
                     <input type="text" name="" id="title">
-                    <textarea name="" id="notes" cols="20" rows="5">
-                    </textarea>
-                    
-                    <input type="text" name="title">
                     <br>
-
-
+                    <label for="notes">Notes:</label>
+                    <br>
+                    <textarea name="" id="notes" cols="20" rows="5"></textarea>
+                    <br>
                     <input type="submit">
                 </form>
             </div>
-            <div id="col-sm all-matches" >
+            <div id="col-sm" >
+                <h3>Matches:</h3>
+                
+                <div id="all-matches">
                 <!-- Add all matches info into this container. -->
+                </div>
             </div>
         </div>
     </div>
