@@ -93,16 +93,21 @@ function renderPlayerMatches(player) {
     let matches = player.matches.reverse();
     
     matches.forEach((match) => {
-        const titleEl = document.createElement("h5")
-        const notesEl = document.createElement("p")
-        const brEl = document.createElement("br")
-        // Add HTML values.
-        titleEl.innerText = match.title
-        notesEl.innerText = match.notes
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox"
+        checkbox.className = "highlight"
+        checkbox.setAttribute("data-id", match.id);
+        
+        const matchItem = document.createElement("a");
+        const brEl = document.createElement("br");
+        
+        // Format list item.
+        matchItem.innerHTML = ` ${match.date} - ${match.title.bold()} - ${match.notes}`;
+        
         // Append elements to div.
-        allMatchesDiv.appendChild(titleEl)
-        allMatchesDiv.appendChild(notesEl)
-        allMatchesDiv.appendChild(brEl)
+        allMatchesDiv.appendChild(checkbox);
+        allMatchesDiv.appendChild(matchItem);
+        allMatchesDiv.appendChild(brEl);
     })
 }        
 
@@ -110,7 +115,8 @@ document.getElementById("new-match-form").addEventListener("submit", newMatch)
 
 function newMatch(e) {
     e.preventDefault();
-    debugger
+
+    const date = e.target.date.value
     const title = e.target.title.value
     const notes = e.target.notes.value
 
@@ -122,6 +128,7 @@ function newMatch(e) {
         body: JSON.stringify({
             // Due to strong params in matches_controller, "match_params", create a match object first. Then, add the attributes to the keys.
             match: {
+                date: date,
                 title: title,
                 notes: notes,
                 player_id: player_id
@@ -137,18 +144,37 @@ function newMatch(e) {
 
 function renderMatch(match) {
     const allMatchesDiv = document.getElementById("all-matches")
-    // console.log(player)
-    const titleEl = document.createElement("h5")
-    const notesEl = document.createElement("p")
-    const brEl = document.createElement("br")
-    // Add HTML values.
-    titleEl.innerText = match.title
-    notesEl.innerText = match.notes
+        
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox"
+    checkbox.className = "highlight"
+    checkbox.setAttribute("data-id", match.id);
+    
+    const matchItem = document.createElement("a");
+    const brEl = document.createElement("br");
+    
+    // Format list item.
+    matchItem.innerHTML = ` ${match.date} - ${match.title.bold()} - ${match.notes}`;
+
     // Append elements to div.
     allMatchesDiv.insertBefore(brEl, allMatchesDiv.firstChild)
-    allMatchesDiv.insertBefore(notesEl, allMatchesDiv.firstChild)
-    allMatchesDiv.insertBefore(titleEl, allMatchesDiv.firstChild)
+    allMatchesDiv.insertBefore(matchItem, allMatchesDiv.firstChild)
+    allMatchesDiv.insertBefore(checkbox, allMatchesDiv.firstChild)
+    
     // Clear the form.
     const form = document.getElementById("new-match-form");
     form.reset();
-}        
+}
+
+class Match {
+    constructor(title, notes, date, player_id){
+    this.title = title;
+    this.notes = notes;
+    this.date = date;
+    this.player_id = player_id
+    }
+
+    highlight() {
+
+    }
+}

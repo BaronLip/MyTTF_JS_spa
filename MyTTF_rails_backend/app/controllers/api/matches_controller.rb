@@ -28,7 +28,7 @@ class Api::MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:notes, :title, :player_id)
+        params.require(:match).permit(:notes, :title, :player_id, :date)
     end
 
 end
