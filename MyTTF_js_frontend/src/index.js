@@ -1,17 +1,17 @@
-document.addEventListener("DOMContentLoaded", playerPage)
+document.addEventListener("DOMContentLoaded", Api.playerPage);
 const player_id = 1
-function playerPage() {
-    fetch(`http://localhost:3000/api/players/${player_id}`)
-    // How would you beable to fetch from a dynamic URL?
-    .then(function(response) {
-        return response.json()
-    })
-    .then(function(player) {
-        console.log(player)
-        renderPlayer(player);
-        renderPlayerMatches(player);
-    })
-}
+// function playerPage() {
+//     fetch(`http://localhost:3000/api/players/${player_id}`)
+//     // How would you beable to fetch from a dynamic URL?
+//     .then(function(response) {
+//         return response.json()
+//     })
+//     .then(function(player) {
+//         console.log(player)
+//         renderPlayer(player);
+//         renderPlayerMatches(player);
+//     })
+// }
 
 function renderPlayer(player) {
     const profileInfoDiv = document.getElementsByClassName("profile-info")
