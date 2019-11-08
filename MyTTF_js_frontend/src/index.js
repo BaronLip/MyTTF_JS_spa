@@ -170,18 +170,24 @@ function renderMatch(match) {
     
     const matchItem = document.createElement("a");
     const brEl = document.createElement("br");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "delete";
+    deleteButton.className = "delete";
+    deleteButton.setAttribute("data-id", match.id);
     
     // Format list item.
     matchItem.innerHTML = ` ${match.date} - ${match.title.bold()} - ${match.notes}`;
 
     // Append matchDiv into allMatchesDiv.
-    allMatchesDiv.appendChild(matchDiv)
+    allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.firstChild)
 
     // Append elements to matchDiv.
     matchDiv.insertBefore(brEl, matchDiv.firstChild)
+    matchDiv.insertBefore(deleteButton, matchDiv.firstChild)
     matchDiv.insertBefore(matchItem, matchDiv.firstChild)
     matchDiv.insertBefore(button, matchDiv.firstChild)
-    
+   
     // Clear the form.
     const form = document.getElementById("new-match-form");
     form.reset();

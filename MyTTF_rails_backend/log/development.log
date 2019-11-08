@@ -4286,3 +4286,151 @@ Processing by Api::MatchesController#destroy as */*
 Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 3.3ms)
 
 
+Started POST "/api/players/1/matches" for ::1 at 2019-11-08 14:56:31 -0600
+Processing by Api::MatchesController#create as */*
+  Parameters: {"match"=>{"date"=>"2019-11-08", "title"=>"Highlight this match.", "notes"=>"It was important and you should follow up with steps to improve.", "player_id"=>1}, "player_id"=>"1"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mPlayer Load (0.2ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mMatch Create (6.7ms)[0m  [1m[32mINSERT INTO "matches" ("player_id", "created_at", "updated_at", "date", "notes", "title") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["player_id", 1], ["created_at", "2019-11-08 20:56:31.518564"], ["updated_at", "2019-11-08 20:56:31.518564"], ["date", "2019-11-08"], ["notes", "It was important and you should follow up with steps to improve."], ["title", "Highlight this match."]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+Completed 200 OK in 17ms (Views: 0.5ms | ActiveRecord: 11.9ms)
+
+
+Started DELETE "/api/players/1/matches/22" for ::1 at 2019-11-08 14:56:42 -0600
+Processing by Api::MatchesController#destroy as */*
+  Parameters: {"player_id"=>"1", "id"=>"22"}
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:23
+  [1m[36mMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = $1[0m  [["id", 22]]
+  ↳ app/controllers/api/matches_controller.rb:23
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:23
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-08 14:57:06 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (0.3ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-08 14:58:13 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (1.6ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/players/1/matches" for ::1 at 2019-11-08 15:01:36 -0600
+Processing by Api::MatchesController#create as */*
+  Parameters: {"match"=>{"date"=>"2019-11-08", "title"=>"Testing for render.", "notes"=>"Is this working?", "player_id"=>1}, "player_id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mPlayer Load (0.4ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("player_id", "created_at", "updated_at", "date", "notes", "title") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["player_id", 1], ["created_at", "2019-11-08 21:01:36.007552"], ["updated_at", "2019-11-08 21:01:36.007552"], ["date", "2019-11-08"], ["notes", "Is this working?"], ["title", "Testing for render."]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/players/1/matches" for ::1 at 2019-11-08 15:03:21 -0600
+Processing by Api::MatchesController#create as */*
+  Parameters: {"match"=>{"date"=>"2019-11-08", "title"=>"Testing for renderMatch.", "notes"=>"Is this working?", "player_id"=>1}, "player_id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mPlayer Load (0.3ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("player_id", "created_at", "updated_at", "date", "notes", "title") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["player_id", 1], ["created_at", "2019-11-08 21:03:21.222963"], ["updated_at", "2019-11-08 21:03:21.222963"], ["date", "2019-11-08"], ["notes", "Is this working?"], ["title", "Testing for renderMatch."]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-08 15:03:23 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (0.2ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/players/1/matches" for ::1 at 2019-11-08 15:03:44 -0600
+Processing by Api::MatchesController#create as */*
+  Parameters: {"match"=>{"date"=>"2019-11-08", "title"=>"Testing Testing Testing", "notes"=>"This should work.", "player_id"=>1}, "player_id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mPlayer Load (0.2ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mMatch Create (6.3ms)[0m  [1m[32mINSERT INTO "matches" ("player_id", "created_at", "updated_at", "date", "notes", "title") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["player_id", 1], ["created_at", "2019-11-08 21:03:44.152162"], ["updated_at", "2019-11-08 21:03:44.152162"], ["date", "2019-11-08"], ["notes", "This should work."], ["title", "Testing Testing Testing"]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+Completed 200 OK in 17ms (Views: 0.5ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-08 15:04:04 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (2.4ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 19ms (Views: 15.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-08 15:05:08 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (1.3ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (0.7ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/players/1/matches" for ::1 at 2019-11-08 15:05:24 -0600
+Processing by Api::MatchesController#create as */*
+  Parameters: {"match"=>{"date"=>"2019-11-08", "title"=>"This should be at the top.", "notes"=>"Be at the top please.", "player_id"=>1}, "player_id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mPlayer Load (0.3ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("player_id", "created_at", "updated_at", "date", "notes", "title") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["player_id", 1], ["created_at", "2019-11-08 21:05:24.965607"], ["updated_at", "2019-11-08 21:05:24.965607"], ["date", "2019-11-08"], ["notes", "Be at the top please."], ["title", "This should be at the top."]]
+  ↳ app/controllers/api/matches_controller.rb:16
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:16
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 6.9ms)
+
+
+Started DELETE "/api/players/1/matches/16" for ::1 at 2019-11-08 15:05:30 -0600
+Processing by Api::MatchesController#destroy as */*
+  Parameters: {"player_id"=>"1", "id"=>"16"}
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:23
+  [1m[36mMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = $1[0m  [["id", 16]]
+  ↳ app/controllers/api/matches_controller.rb:23
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:23
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.8ms)
+
+
