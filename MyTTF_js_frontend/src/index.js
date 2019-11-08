@@ -1,17 +1,18 @@
-document.addEventListener("DOMContentLoaded", Api.playerPage);
+document.addEventListener("DOMContentLoaded", Api.loadPage);
 const player_id = 1
-// function playerPage() {
-//     fetch(`http://localhost:3000/api/players/${player_id}`)
-//     // How would you beable to fetch from a dynamic URL?
-//     .then(function(response) {
-//         return response.json()
-//     })
-//     .then(function(player) {
-//         console.log(player)
-//         renderPlayer(player);
-//         renderPlayerMatches(player);
-//     })
-// }
+    // // Shifted this to api.js
+    // function loadPage() {
+    //     fetch(`http://localhost:3000/api/players/${player_id}`)
+    //     // How would you beable to fetch from a dynamic URL?
+    //     .then(function(response) {
+    //         return response.json()
+    //     })
+    //     .then(function(player) {
+    //         console.log(player)
+    //         renderPlayer(player);
+    //         renderPlayerMatches(player);
+    //     })
+    // }
 
 function renderPlayer(player) {
     const profileInfoDiv = document.getElementsByClassName("profile-info")
@@ -93,10 +94,11 @@ function renderPlayerMatches(player) {
     let matches = player.matches.reverse();
     
     matches.forEach((match) => {
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox"
-        checkbox.className = "highlight"
-        checkbox.setAttribute("data-id", match.id);
+        const button = document.createElement("button");
+        // button.type = "button"
+        button.innerHTML = "highlight"
+        button.className = ""
+        button.setAttribute("data-id", match.id);
         
         const matchItem = document.createElement("a");
         const brEl = document.createElement("br");
@@ -105,14 +107,13 @@ function renderPlayerMatches(player) {
         matchItem.innerHTML = ` ${match.date} - ${match.title.bold()} - ${match.notes}`;
         
         // Append elements to div.
-        allMatchesDiv.appendChild(checkbox);
+        allMatchesDiv.appendChild(button);
         allMatchesDiv.appendChild(matchItem);
         allMatchesDiv.appendChild(brEl);
     })
 }        
 
 document.getElementById("new-match-form").addEventListener("submit", newMatch)
-
 function newMatch(e) {
     e.preventDefault();
 
@@ -145,10 +146,11 @@ function newMatch(e) {
 function renderMatch(match) {
     const allMatchesDiv = document.getElementById("all-matches")
         
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox"
-    checkbox.className = "highlight"
-    checkbox.setAttribute("data-id", match.id);
+    const button = document.createElement("button");
+    // checkbox.type = "checkbox"
+    button.innerHTML = "highlight"
+    button.className = ""
+    button.setAttribute("data-id", match.id);
     
     const matchItem = document.createElement("a");
     const brEl = document.createElement("br");
@@ -159,22 +161,25 @@ function renderMatch(match) {
     // Append elements to div.
     allMatchesDiv.insertBefore(brEl, allMatchesDiv.firstChild)
     allMatchesDiv.insertBefore(matchItem, allMatchesDiv.firstChild)
-    allMatchesDiv.insertBefore(checkbox, allMatchesDiv.firstChild)
+    allMatchesDiv.insertBefore(button, allMatchesDiv.firstChild)
     
     // Clear the form.
     const form = document.getElementById("new-match-form");
     form.reset();
 }
 
-class Match {
-    constructor(title, notes, date, player_id){
-    this.title = title;
-    this.notes = notes;
-    this.date = date;
-    this.player_id = player_id
-    }
 
-    highlight() {
+// !!!Eventlisteners are able to listen to child elements!!!
+document.getElementById("all-matches").addEventListener("click", highlight)
 
+function highlight(e) {
+    const textEl = e.target.nextSibling
+
+    if (textEl.getAttribute("class") === null) {
+        textEl.setAttribute("class", "highlight");
+        textEl.setAttribute("style", "color: brown");
+    } else {
+        textEl.removeAttribute("class")
+        textEl.removeAttribute("style")
     }
 }

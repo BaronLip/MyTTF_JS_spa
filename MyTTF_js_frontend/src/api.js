@@ -1,7 +1,7 @@
 class Api {
     static baseUrl = "http://localhost:3000"
     
-    static playerPage() {
+    static loadPage() {
         fetch(Api.baseUrl + `/api/players/${player_id}`)
         .then(function (response) {
         return response.json()
