@@ -9,4 +9,5 @@ class Match {
 
         Match.all.push(this);
     }
+    
 }

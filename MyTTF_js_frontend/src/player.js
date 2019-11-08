@@ -18,7 +18,10 @@ class Player {
         Player.all.push(this);
     }
 
-    matches() {
-        Match.all.filter(match => match.player.username === this.username)
-    }
+    // // May not need this.
+    // matches() {
+    //     Match.all.filter(match => match.player.username === this.username)
+    // }
+
+    
 }

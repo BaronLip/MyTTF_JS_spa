@@ -94,22 +94,35 @@ function renderPlayerMatches(player) {
     let matches = player.matches.reverse();
     
     matches.forEach((match) => {
+        // create wrapper div for each match.
+        const matchDiv = document.createElement("div");
+        matchDiv.setAttribute("data-id", match.id);
+        matchDiv.setAttribute("id", match.id);
+        
+        // Create content for each match.
         const button = document.createElement("button");
-        // button.type = "button"
-        button.innerHTML = "highlight"
-        button.className = ""
+        button.innerHTML = "highlight";
         button.setAttribute("data-id", match.id);
         
         const matchItem = document.createElement("a");
         const brEl = document.createElement("br");
+
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "delete";
+        deleteButton.className = "delete";
+        deleteButton.setAttribute("data-id", match.id);
         
         // Format list item.
         matchItem.innerHTML = ` ${match.date} - ${match.title.bold()} - ${match.notes}`;
         
-        // Append elements to div.
-        allMatchesDiv.appendChild(button);
-        allMatchesDiv.appendChild(matchItem);
-        allMatchesDiv.appendChild(brEl);
+        // Append matchDiv into allMatchesDiv.
+        allMatchesDiv.appendChild(matchDiv);
+
+        // Append elements into matchDiv.
+        matchDiv.appendChild(button);
+        matchDiv.appendChild(matchItem);
+        matchDiv.appendChild(deleteButton);
+        matchDiv.appendChild(brEl);
     })
 }        
 
@@ -146,8 +159,11 @@ function newMatch(e) {
 function renderMatch(match) {
     const allMatchesDiv = document.getElementById("all-matches")
         
+    // create wrapper div for each match.
+    const matchDiv = document.createElement("div")
+    matchDiv.setAttribute("data-id", match.id)
+
     const button = document.createElement("button");
-    // checkbox.type = "checkbox"
     button.innerHTML = "highlight"
     button.className = ""
     button.setAttribute("data-id", match.id);
@@ -158,10 +174,13 @@ function renderMatch(match) {
     // Format list item.
     matchItem.innerHTML = ` ${match.date} - ${match.title.bold()} - ${match.notes}`;
 
-    // Append elements to div.
-    allMatchesDiv.insertBefore(brEl, allMatchesDiv.firstChild)
-    allMatchesDiv.insertBefore(matchItem, allMatchesDiv.firstChild)
-    allMatchesDiv.insertBefore(button, allMatchesDiv.firstChild)
+    // Append matchDiv into allMatchesDiv.
+    allMatchesDiv.appendChild(matchDiv)
+
+    // Append elements to matchDiv.
+    matchDiv.insertBefore(brEl, matchDiv.firstChild)
+    matchDiv.insertBefore(matchItem, matchDiv.firstChild)
+    matchDiv.insertBefore(button, matchDiv.firstChild)
     
     // Clear the form.
     const form = document.getElementById("new-match-form");
@@ -173,6 +192,7 @@ function renderMatch(match) {
 document.getElementById("all-matches").addEventListener("click", highlight)
 
 function highlight(e) {
+    e.preventDefault();
     const textEl = e.target.nextSibling
 
     if (textEl.getAttribute("class") === null) {
@@ -181,5 +201,18 @@ function highlight(e) {
     } else {
         textEl.removeAttribute("class")
         textEl.removeAttribute("style")
+    }
+}
+
+document.getElementById("all-matches").addEventListener("click", deleteMatch)
+
+function deleteMatch(e) {
+    e.preventDefault();
+    matchId = e.target.dataset.id;
+
+    fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, { method: "DELETE" });
+    
+    if (e.target.className === "delete") {
+        e.target.parentElement.remove()
     }
 }
