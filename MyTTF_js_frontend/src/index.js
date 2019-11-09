@@ -65,6 +65,8 @@ function deleteMatch(e) {
     if (e.target.className === "delete") {
         e.target.parentElement.remove();
     }
+
+    window.alert("Match deleted.")
 }
 
 

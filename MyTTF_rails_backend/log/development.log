@@ -5256,3 +5256,27 @@ Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.4ms)
 NoMethodError (undefined method `destroy' for nil:NilClass):
   
 app/controllers/api/matches_controller.rb:23:in `destroy'
+Started GET "/api/players/1" for ::1 at 2019-11-09 14:47:38 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (0.5ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/api/players/1/matches/18" for ::1 at 2019-11-09 14:47:42 -0600
+Processing by Api::MatchesController#destroy as */*
+  Parameters: {"player_id"=>"1", "id"=>"18"}
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:23
+  [1m[36mMatch Destroy (0.4ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = $1[0m  [["id", 18]]
+  ↳ app/controllers/api/matches_controller.rb:23
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:23
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
