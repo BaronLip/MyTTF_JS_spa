@@ -18,7 +18,7 @@ class Player {
         Player.all.push(this);
 
         this.render(data)
-        
+
     }
 
     // // May not need this.

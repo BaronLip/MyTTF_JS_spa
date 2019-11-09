@@ -10,18 +10,13 @@ class Match {
 
         Match.all.push(this);
 
-        this.render(matchesData);
+        this.renderMatches(matchesData);
     }
 
-    render(matchData) {
-        // debugger
+    renderMatches(matchData) {
+        
         const allMatchesDiv = document.getElementById("all-matches")
-        // Reversed matches to have the latest up top.
-        // let playerMatches = player.matches.reverse();
 
-        // playerMatches.forEach((match) => {
-            
-        // })
         // create wrapper div for each match.
         const matchDiv = document.createElement("div");
         matchDiv.setAttribute("data-id", matchData.id);

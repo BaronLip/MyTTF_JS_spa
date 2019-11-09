@@ -172,47 +172,47 @@ function newMatch(e) {
     })
     .then((response) => response.json())
     .then((match) => {
-        renderMatch(match)
+        new Match(match)
     })
     .catch((error) => console.log(error))
 }
-
-function renderMatch(match) {
-    const allMatchesDiv = document.getElementById("all-matches")
+// // This is no longer needed after creating Match class.
+// function renderMatch(match) {
+//     const allMatchesDiv = document.getElementById("all-matches")
         
-    // create wrapper div for each match.
-    const matchDiv = document.createElement("div")
-    matchDiv.setAttribute("data-id", match.id)
+//     // create wrapper div for each match.
+//     const matchDiv = document.createElement("div")
+//     matchDiv.setAttribute("data-id", match.id)
 
-    const button = document.createElement("button");
-    button.innerHTML = "highlight"
-    button.className = ""
-    button.setAttribute("data-id", match.id);
+//     const button = document.createElement("button");
+//     button.innerHTML = "highlight"
+//     button.className = ""
+//     button.setAttribute("data-id", match.id);
     
-    const matchItem = document.createElement("a");
-    const brEl = document.createElement("br");
+//     const matchItem = document.createElement("a");
+//     const brEl = document.createElement("br");
 
-    const deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "delete";
-    deleteButton.className = "delete";
-    deleteButton.setAttribute("data-id", match.id);
+//     const deleteButton = document.createElement("button");
+//     deleteButton.innerHTML = "delete";
+//     deleteButton.className = "delete";
+//     deleteButton.setAttribute("data-id", match.id);
     
-    // Format list item.
-    matchItem.innerHTML = ` ${match.date} - ${match.title.bold()} - ${match.notes}`;
+//     // Format list item.
+//     matchItem.innerHTML = ` ${match.date} - ${match.title.bold()} - ${match.notes}`;
 
-    // Append matchDiv into allMatchesDiv.
-    allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.firstChild)
+//     // Append matchDiv into allMatchesDiv.
+//     allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.firstChild)
 
-    // Append elements to matchDiv.
-    matchDiv.insertBefore(brEl, matchDiv.firstChild)
-    matchDiv.insertBefore(deleteButton, matchDiv.firstChild)
-    matchDiv.insertBefore(matchItem, matchDiv.firstChild)
-    matchDiv.insertBefore(button, matchDiv.firstChild)
+//     // Append elements to matchDiv.
+//     matchDiv.insertBefore(brEl, matchDiv.firstChild)
+//     matchDiv.insertBefore(deleteButton, matchDiv.firstChild)
+//     matchDiv.insertBefore(matchItem, matchDiv.firstChild)
+//     matchDiv.insertBefore(button, matchDiv.firstChild)
    
-    // Clear the form.
-    const form = document.getElementById("new-match-form");
-    form.reset();
-}
+//     // Clear the form.
+//     const form = document.getElementById("new-match-form");
+//     form.reset();
+// }
 
 // !!!Eventlisteners are able to listen to child elements!!!
 document.getElementById("all-matches").addEventListener("click", highlight)
