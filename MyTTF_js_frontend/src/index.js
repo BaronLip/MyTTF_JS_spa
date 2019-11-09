@@ -14,6 +14,9 @@ fetch(baseUrl + `/api/players/${player_id}`)
         // renderPlayer(player);
         // renderPlayerMatches(player);
     })
+    .catch(error => {
+        console.log(error);
+    })
 }
 
 
