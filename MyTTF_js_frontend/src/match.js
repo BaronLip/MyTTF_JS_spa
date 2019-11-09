@@ -14,7 +14,7 @@ class Match {
     }
 
     render(matchData) {
-        debugger
+        // debugger
         const allMatchesDiv = document.getElementById("all-matches")
         // Reversed matches to have the latest up top.
         // let playerMatches = player.matches.reverse();
@@ -43,8 +43,8 @@ class Match {
         // Format list item.
         matchItem.innerHTML = ` ${matchData.date} - ${matchData.title.bold()} - ${matchData.notes}`;
 
-        // Append matchDiv into allMatchesDiv.
-        allMatchesDiv.appendChild(matchDiv);
+        // InsertBefore into allMatchesDiv to have newest on top.
+        allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.childNodes[0]);
 
         // Append elements into matchDiv.
         matchDiv.appendChild(button);
