@@ -46,5 +46,34 @@ class Match {
         matchDiv.appendChild(matchItem);
         matchDiv.appendChild(deleteButton);
         matchDiv.appendChild(brEl);
-    }        
+    }    
+    
+    // new(e) {
+    //     debugger
+    //     e.preventDefault();
+
+    //     const date = e.target.date.value
+    //     const title = e.target.title.value
+    //     const notes = e.target.notes.value
+
+    //     fetch(`http://localhost:3000/api/players/${player_id}/matches`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             match: {
+    //                 date: date,
+    //                 title: title,
+    //                 notes: notes,
+    //                 player_id: player_id
+    //             }
+    //         })
+    //     })
+    //     .then((response) => response.json())
+    //     .then((match) => {
+    //         new Match(match)
+    //     })
+    //     .catch((error) => console.log(error))
+    // }
 }
