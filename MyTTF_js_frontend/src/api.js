@@ -1,17 +1,8 @@
 class Api {
-    static baseUrl = "http://localhost:3000"
-    
-    static loadPage() {
-        fetch(Api.baseUrl + `/api/players/${player_id}`)
-        .then(function (response) {
-        return response.json()
-        })
-        .then(function (player) {
-            console.log(player)
-            renderPlayer(player);
-            renderPlayerMatches(player);
-        })
+    constructor(data) {
+        // console.log(data)
+        // debugger
+        this.player = new Player(data)
+        this.matches = data.matches.map(match => new Match(match))
     }
-
-    
 }
