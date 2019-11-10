@@ -97,6 +97,5 @@ class Player {
     profileEquipDiv[0].appendChild(blade);
     profileEquipDiv[0].appendChild(redRubber);
     profileEquipDiv[0].appendChild(blackRubber);
-}
-
+    }
 }

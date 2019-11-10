@@ -12,8 +12,6 @@ fetch(baseUrl + `/api/players/${player_id}`)
     })
     .then(function (data) {
         new Api(data);
-        // renderPlayer(player);
-        // renderPlayerMatches(player);
     })
     .catch(error => {
         console.log(error);
@@ -54,7 +52,7 @@ function newMatch(e) {
 
 
 // Delete a Match.
-document.getElementById("all-matches").addEventListener("click", deleteMatch)
+// document.getElementById("all-matches").addEventListener("click", deleteMatch)
 
 function deleteMatch(e) {
     e.preventDefault();
@@ -71,7 +69,7 @@ function deleteMatch(e) {
 
 
 // Highlight a Match.
-document.getElementById("all-matches").addEventListener("click", highlight);
+// document.getElementById("all-matches").addEventListener("click", highlight);
 
 function highlight(e) {
     console.log(e)
@@ -79,12 +77,14 @@ function highlight(e) {
     e.preventDefault();
     const textDiv = e.target.parentElement;
 
-    if (textDiv.getAttribute("class") === null) {
-        textDiv.setAttribute("class", "highlight");
-        textDiv.setAttribute("style", "color: brown");
-    } else {
-        textDiv.removeAttribute("class");
-        textDiv.removeAttribute("style");
+    if (e.target.innerText === "hightlight") {
+        if (textDiv.getAttribute("class") === highlight) {
+            textDiv.setAttribute("class", "highlighted");
+            textDiv.setAttribute("style", "color: brown");
+        } else {
+            textDiv.removeAttribute("class");
+            textDiv.removeAttribute("style");
+        }
     }
 }
 

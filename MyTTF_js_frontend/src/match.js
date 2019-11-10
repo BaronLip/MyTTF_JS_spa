@@ -25,7 +25,9 @@ class Match {
         // Create content for each match.
         const button = document.createElement("button");
         button.innerHTML = "highlight";
+        button.className = "highlight";
         button.setAttribute("data-id", matchData.id);
+        button.addEventListener("click", highlight);
 
         const matchItem = document.createElement("a");
         const brEl = document.createElement("br");
@@ -34,7 +36,8 @@ class Match {
         deleteButton.innerHTML = "delete";
         deleteButton.className = "delete";
         deleteButton.setAttribute("data-id", matchData.id);
-
+        deleteButton.addEventListener("click", deleteMatch);
+        
         // Format list item.
         matchItem.innerHTML = ` ${matchData.date} - ${matchData.title.bold()} - ${matchData.notes}`;
 
@@ -46,6 +49,10 @@ class Match {
         matchDiv.appendChild(matchItem);
         matchDiv.appendChild(deleteButton);
         matchDiv.appendChild(brEl);
+
+        const newMatchForm = document.getElementById("new-match-form");
+        newMatchForm.reset(); // Clears the form inputs.
+        return false; // Prevents page refresh.
     }    
     
     // new(e) {
