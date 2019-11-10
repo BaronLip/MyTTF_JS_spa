@@ -21,8 +21,8 @@ players = Player.create([
     wins: 0,
     losses: 0
     },
-    {username: "Ryan"},
-    {username: "Scott"},
-    {username: "Pavlo"},
-    {username: "Dave"},
+    # {username: "Ryan"},
+    # {username: "Scott"},
+    # {username: "Pavlo"},
+    # {username: "Dave"},
 ])
