@@ -30,6 +30,7 @@ class Match {
         button.addEventListener("click", highlight);
 
         const matchItem = document.createElement("a");
+        matchItem.setAttribute("class", "")
         const brEl = document.createElement("br");
 
         const deleteButton = document.createElement("button");

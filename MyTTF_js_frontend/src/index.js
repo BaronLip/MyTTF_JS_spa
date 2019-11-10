@@ -52,7 +52,6 @@ function newMatch(e) {
 
 
 // Delete a Match.
-// document.getElementById("all-matches").addEventListener("click", deleteMatch)
 
 function deleteMatch(e) {
     e.preventDefault();
@@ -67,25 +66,28 @@ function deleteMatch(e) {
     window.alert("Match deleted.")
 }
 
-
 // Highlight a Match.
-// document.getElementById("all-matches").addEventListener("click", highlight);
-
 function highlight(e) {
     console.log(e)
-    // debugger
     e.preventDefault();
-    const textDiv = e.target.parentElement;
+    const content = e.target.nextSibling;
 
-    if (e.target.innerText === "hightlight") {
-        if (textDiv.getAttribute("class") === highlight) {
-            textDiv.setAttribute("class", "highlighted");
-            textDiv.setAttribute("style", "color: brown");
-        } else {
-            textDiv.removeAttribute("class");
-            textDiv.removeAttribute("style");
-        }
+    if (content.getAttribute("class") === "") {
+        content.setAttribute("class", "highlighted");
+        content.setAttribute("style", "color: brown");
+    } else {
+        content.setAttribute("class", "");
+        content.setAttribute("style", "");
     }
 }
 
+// // Total Failures Below :)
 
+// document.getElementById("all-matches").addEventListener("click", highlight);
+
+// const highlightButtons = document.querySelectorAll(".highlight")
+// highlightButtons.forEach(function(button) {
+    //     button.addEventListener("click", highlight)
+// })
+
+// document.getElementById("all-matches").addEventListener("click", deleteMatch)
