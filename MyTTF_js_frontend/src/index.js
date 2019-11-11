@@ -51,8 +51,44 @@ function newMatch(e) {
 }
 
 
-// Delete a Match.
 
+// Edit a Match.
+document.getElementById("edit-match-form").addEventListener("submit", editMatch);
+function editMatch(e) {
+    e.preventDefault();
+    console.log(e);
+    const matchId = e.target.dataset.id;
+    const date = document.getElementById("date").value
+    const title = document.getElementById("title").value
+    const notes = document.getElementById("notes").value
+
+    fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            match: {
+                id: matchId,
+                date: date,
+                title: title,
+                notes: notes,
+                player_id: player_id
+            }
+        })
+    })
+    .then((response) => response.json())
+    .then((match) => {
+        // console.log(match)
+        Match.edit(match)
+    })
+    .catch((error) => console.log(error))
+}
+    
+
+
+
+// Delete a Match.
 function deleteMatch(e) {
     e.preventDefault();
     matchId = e.target.dataset.id;

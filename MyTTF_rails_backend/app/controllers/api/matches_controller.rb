@@ -18,6 +18,14 @@ class Api::MatchesController < ApplicationController
         render json: match, status: 200
     end
 
+    def update
+        match = Match.find_by(:id => params[:id])
+        # byebug
+        # Need to have :id passed in via 
+        match.update(match_params)
+        render json: match, status: 200
+    end
+
     def destroy
         match = Match.find_by(:id => params[:id])
         match.destroy

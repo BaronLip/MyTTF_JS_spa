@@ -23,7 +23,6 @@
                 </ul>
             </nav> -->
         </div>
-        
     </header>
 
     <!-- Add player details in here. -->
@@ -40,12 +39,48 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal HTML -->
+    <div id="editModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
     
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit this match</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-match-form">
+                        <label for="date">Date:</label>
+                        <br>
+                        <input type="date" name="" id="date">
+                        <br>
+                        <label for="title">Title:</label>
+                        <br>
+                        <input type="text" name="" id="title">
+                        <br>
+                        <label for="notes">Notes:</label>
+                        <br>
+                        <textarea name="" id="notes" cols="20" rows="5"></textarea>
+                        <br>
+                        <input type="submit">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+    <!-- Matches info -->
     <div id="matches-container" class="container">
         <div class="row">
             <div class="col-sm-4">
                 <h3>Add a match:</h3>
-                <form id="new-match-form" action="http://localhost:3000/matches">
+                <!-- The " action="" " attribute path is determinded by javascripts fetch path. -->
+                <form id="new-match-form">
                     <label for="date">Date:</label>
                     <br>
                     <input type="date" name="" id="date">
