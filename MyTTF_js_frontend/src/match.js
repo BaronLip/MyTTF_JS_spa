@@ -12,10 +12,10 @@ class Match {
 
         Match.all.push(this);
 
-        this.renderMatch();
+        this.render();
     }
 
-    renderMatch() {
+    render() {
         // Locate all-matches div.
         const allMatchesDiv = document.getElementById("all-matches")
 
@@ -58,7 +58,7 @@ class Match {
         deleteButton.innerHTML = "delete";
         deleteButton.className = "delete";
         deleteButton.setAttribute("data-id", this.id);
-        deleteButton.addEventListener("click", deleteMatch);
+        deleteButton.addEventListener("click", this.delete);
         
         // Format list item.
         matchItem.innerHTML = ` ${this.date} - ${this.title.bold()} - ${this.notes}`;
@@ -81,33 +81,18 @@ class Match {
     static edit() {
         console.log("I'm hitting this function!")
     }
+
+    delete(e) {
+        e.preventDefault();
+        const matchId = e.target.dataset.id;
+
+        fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, { method: "DELETE" });
+
+        if (e.target.className === "delete") {
+            e.target.parentElement.remove();
+        }
+
+        window.alert("Match deleted.")
+    }
     
-    // new(e) {
-    //     debugger
-    //     e.preventDefault();
-
-    //     const date = e.target.date.value
-    //     const title = e.target.title.value
-    //     const notes = e.target.notes.value
-
-    //     fetch(`http://localhost:3000/api/players/${player_id}/matches`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             match: {
-    //                 date: date,
-    //                 title: title,
-    //                 notes: notes,
-    //                 player_id: player_id
-    //             }
-    //         })
-    //     })
-    //     .then((response) => response.json())
-    //     .then((match) => {
-    //         new Match(match)
-    //     })
-    //     .catch((error) => console.log(error))
-    // }
 }

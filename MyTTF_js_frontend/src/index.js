@@ -93,18 +93,18 @@ function editMatch(e) {
 
 
 // Delete a Match.
-function deleteMatch(e) {
-    e.preventDefault();
-    matchId = e.target.dataset.id;
+// function deleteMatch(e) {
+//     e.preventDefault();
+//     matchId = e.target.dataset.id;
 
-    fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, { method: "DELETE" });
+//     fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, { method: "DELETE" });
     
-    if (e.target.className === "delete") {
-        e.target.parentElement.remove();
-    }
+//     if (e.target.className === "delete") {
+//         e.target.parentElement.remove();
+//     }
 
-    window.alert("Match deleted.")
-}
+//     window.alert("Match deleted.")
+// }
 
 // Highlight a Match.
 function highlight(e) {
