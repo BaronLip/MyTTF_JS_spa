@@ -26,20 +26,21 @@ class Match {
 
         // Create content for each match.
         matchDiv.innerHTML = `
-            <button class="highlight btn-info btn-sm" data-set-id="${this.id}">highlight</button>
+            <button class="highlight btn-info btn-sm" data-id="${this.id}">highlight</button>
             
             <a id="matchText" class=""> ${this.date} - ${this.title.bold()} - ${this.notes}</a>
             
-            <button class="edit btn-info btn-sm" data-set-id="${this.id}" type="button" data-toggle="modal" data-target="#editModal">edit</button>
+            <button class="edit btn-info btn-sm" data-id="${this.id}" type="button" data-toggle="modal" data-target="#editModal">edit</button>
             
-            <button class="delete btn-info btn-sm" data-set-id="${this.id}">delete</button>
+            <button class="delete btn-info btn-sm" data-id="${this.id}">delete</button>
             
             <br>
         `
 
         // Below is jQuery/Boostrap to add the data-id to the modal inputs. 
         $('#editModal').on('show.bs.modal', function (event) {
-            let id = event.relatedTarget.dataset.setId;
+            debugger
+            let id = event.relatedTarget.dataset.id;
             let modal = $(this);
             modal.find('.modal-body form').attr("data-id", id);
             modal.find(':submit').attr("data-toggle", "modal");
@@ -97,7 +98,7 @@ class Match {
 
     delete(e) {
         e.preventDefault();
-        const matchId = e.target.dataset.setId;
+        const matchId = e.target.dataset.id;
 
         fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, { method: "DELETE" });
 
