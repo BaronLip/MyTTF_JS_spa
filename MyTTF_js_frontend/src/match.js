@@ -3,7 +3,7 @@ class Match {
     static all = []
 
     constructor(matchData) {
-        console.log(matchData)
+        // console.log(matchData)
         this.id = matchData.id
         this.player_id = matchData.player_id;
         this.date = matchData.date;

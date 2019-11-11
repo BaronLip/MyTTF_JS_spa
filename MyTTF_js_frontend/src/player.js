@@ -17,7 +17,7 @@ class Player {
         
         Player.all.push(this);
 
-        this.render(data)
+        this.render()
 
     }
 
@@ -26,76 +26,32 @@ class Player {
     //     Match.all.filter(match => match.player.username === this.username)
     // }
 
-    render(player) {
-    const profileInfoDiv = document.getElementsByClassName("profile-info")
-    // create Player profile based on player.
+    render() {
+        const profileContainer = document.getElementById("profile-container")
 
-    const infoHeader = document.createElement("h3")
-    infoHeader.innerText = "Profile:"
-
-    const userName = document.createElement("p")
-    userName.innerText = `name: ${player.username}`
-
-    const age = document.createElement("p")
-    age.innerText = `age :${player.age}`
-
-    const gender = document.createElement("p")
-    gender.innerText = `gender :${player.gender}`
-
-    const hand = document.createElement("p")
-    hand.innerText = `hand: ${player.hand}`
-
-
-    // Putting it together.
-    profileInfoDiv[0].appendChild(infoHeader)
-    profileInfoDiv[0].appendChild(userName)
-    profileInfoDiv[0].appendChild(age)
-    profileInfoDiv[0].appendChild(gender)
-    profileInfoDiv[0].appendChild(hand)
-
-
-    // Add stats in separate div.
-    const profileStatsDiv = document.getElementsByClassName("profile-stats")
-
-    const statsHeader = document.createElement("h3")
-    statsHeader.innerText = "Stats:"
-
-    const wins = document.createElement("p")
-    wins.innerText = `wins: ${player.wins}`
-
-    const losses = document.createElement("p")
-    losses.innerText = `losses: ${player.losses}`
-
-    const rating = document.createElement("p")
-    rating.innerText = `rating: ${player.rating}`
-
-    const style = document.createElement("p")
-    style.innerText = `style: ${player.style}`
-
-    profileStatsDiv[0].appendChild(statsHeader)
-    profileStatsDiv[0].appendChild(wins)
-    profileStatsDiv[0].appendChild(losses)
-    profileStatsDiv[0].appendChild(rating)
-    profileStatsDiv[0].appendChild(style)
-
-
-    const profileEquipDiv = document.getElementsByClassName("profile-equip")
-
-    const equipHeader = document.createElement("h3")
-    equipHeader.innerText = "Equipment:"
-
-    const blade = document.createElement("p")
-    blade.innerText = `blade: ${player.blade}`
-
-    const redRubber = document.createElement("p")
-    redRubber.innerText = `red rubber: ${player.red_rubber}`
-
-    const blackRubber = document.createElement("p")
-    blackRubber.innerText = `black rubber: ${player.black_rubber}`
-
-    profileEquipDiv[0].appendChild(equipHeader);
-    profileEquipDiv[0].appendChild(blade);
-    profileEquipDiv[0].appendChild(redRubber);
-    profileEquipDiv[0].appendChild(blackRubber);
+        profileContainer.innerHTML = `
+            <div class="row">
+            <div class="col-sm-4 profile-info">
+                <h3>Profile:</h3>
+                <p>name: ${this.username}</p>
+                <p>age: ${this.age}</p>
+                <p>gender: ${this.gender}</p>
+                <p>hand: ${this.hand}</p>
+            </div>
+            <div class="col-sm-4 profile-stats">
+                <h3>Stats:</h3>
+                <p>wins: ${this.wins}</p>
+                <p>losses: ${this.losses}</p>
+                <p>rating: ${this.rating}</p>
+                <p>style: ${this.style}</p>
+            </div>
+            <div class="col-sm-4 profile-equip">
+                <h3>Equipment:</h3>
+                <p>blade: ${this.blade}</p>
+                <p>red rubber: ${this.red_rubber}</p>
+                <p>black rubber: ${this.black_rubber}</p>
+            </div>
+        </div>
+        `
     }
 }
