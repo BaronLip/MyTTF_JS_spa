@@ -39,15 +39,11 @@ class Match {
 
         // Below is jQuery/Boostrap to add the data-id to the modal inputs. 
         $('#editModal').on('show.bs.modal', function (event) {
-            // let button = $(event.relatedTarget);
             let id = event.relatedTarget.dataset.setId;
-            // console.log(id)
             let modal = $(this);
             modal.find('.modal-body form').attr("data-id", id);
             modal.find(':submit').attr("data-toggle", "modal");
             modal.find(':submit').attr("data-target", "#editModal");
-            
-            // modal.find(':submit').attr("data-set-id", id);
         })
 
         allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.childNodes[0]);
@@ -94,23 +90,20 @@ class Match {
         .then((matchData) => {
             console.log(matchData)
             const matchText = document.getElementById("matchText")
-            // debugger
             matchText.innerHTML = `${matchData.date} - ${matchData.title.bold()} - ${matchData.notes}`
-
         })
         .catch((error) => console.log(error))
     }
 
     delete(e) {
         e.preventDefault();
-        const matchId = e.target.dataset.id;
+        const matchId = e.target.dataset.setId;
 
         fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, { method: "DELETE" });
 
-        if (e.target.className === "delete") {
+        if (e.target.classList.contains("delete")) {
             e.target.parentElement.remove();
         }
-
         window.alert("Match deleted.")
     }
 
