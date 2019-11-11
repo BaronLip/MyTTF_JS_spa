@@ -36,34 +36,18 @@ class Match {
             
             <br>
         `
-        
-        
-        // highlightButton.innerHTML = "highlight";
-        // highlightButton.className = "highlight";
-        // highlightButton.setAttribute("data-id", this.id);
-        
-
-        // const matchItem = document.createElement("a");
-        // matchItem.setAttribute("class", "")
-        // const brEl = document.createElement("br");
-
-        // const editButton = document.createElement("button");
-        // editButton.innerHTML = "edit";
-        // editButton.className = "edit";
-        // editButton.setAttribute("data-id", this.id);
-        // editButton.setAttribute("type", "button");
-        // editButton.setAttribute("class", "btn btn-info btn-lg");
-        // editButton.setAttribute("data-toggle", "modal");
-        // editButton.setAttribute("data-target", "#editModal");
 
         // Below is jQuery/Boostrap to add the data-id to the modal inputs. 
         $('#editModal').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget);
-            let id = button.data('id');
-            let modal = $(this)
-            modal.find('.modal-body form').attr("data-id", id)
-            modal.find(':submit').attr("data-toggle", "modal")
-            modal.find(':submit').attr("data-target", "#editModal")
+            let id = event.relatedTarget.dataset.setId;
+            console.log(id)
+            let modal = $(this);
+            modal.find('.modal-body form').attr("data-id", id);
+            modal.find(':submit').attr("data-toggle", "modal");
+            modal.find(':submit').attr("data-target", "#editModal");
+            
+            // modal.find(':submit').attr("data-set-id", id);
         })
 
         allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.childNodes[0]);
@@ -71,33 +55,47 @@ class Match {
         const highlightButton = document.getElementsByClassName("highlight");
         highlightButton[0].addEventListener("click", this.highlight);
 
+        // const editSubmitButton = document.getElementById("edit-match-form");editSubmitButton.addEventListener("submit", this.edit);
+        
         const deleteButton = document.getElementsByClassName("delete");
         deleteButton[0].addEventListener("click", this.delete);
-        // deleteButton.innerHTML = "delete";
-        // deleteButton.className = "delete";
-        // deleteButton.setAttribute("data-id", this.id);
-        
-        // Format list item.
-        // matchItem.innerHTML = ` ${this.date} - ${this.title.bold()} - ${this.notes}`;
-
-        // InsertBefore into allMatchesDiv to have newest on top.
-        // allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.childNodes[0]);
-
-        // Append elements into matchDiv.
-        // matchDiv.appendChild(highlightButton);
-        // matchDiv.appendChild(matchItem);
-        // matchDiv.appendChild(editButton);
-        // matchDiv.appendChild(deleteButton);
-        // matchDiv.appendChild(brEl);
 
         const newMatchForm = document.getElementById("new-match-form");
         newMatchForm.reset(); // Clears the form inputs.
         return false; // Prevents page refresh.
     }    
 
-    static edit() {
-        console.log("I'm hitting this function!")
-    }
+    // edit(e) {
+    //     e.preventDefault();
+    //     console.log(e.target)
+    //     console.log(e.target.dataset.id)
+    //     const matchId = e.target.dataset.id;
+    //     debugger
+    //     const date = document.getElementById("date").value
+    //     const title = document.getElementById("title").value
+    //     const notes = document.getElementById("notes").value
+
+        // fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, {
+        //     method: "PUT",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         match: {
+        //             id: matchId,
+        //             date: date,
+        //             title: title,
+        //             notes: notes,
+        //             player_id: player_id
+        //         }
+        //     })
+        // })
+        // .then((response) => response.json())
+        // .then((matchData) => {
+        //     console.log(matchData)
+        // })
+        // .catch((error) => console.log(error))
+    // }
 
     delete(e) {
         e.preventDefault();

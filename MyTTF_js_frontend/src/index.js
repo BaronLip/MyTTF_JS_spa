@@ -56,7 +56,8 @@ function newMatch(e) {
 document.getElementById("edit-match-form").addEventListener("submit", editMatch);
 function editMatch(e) {
     e.preventDefault();
-    console.log(e);
+    console.log(e.target.dataset.id);
+    debugger
     const matchId = e.target.dataset.id;
     const date = document.getElementById("date").value
     const title = document.getElementById("title").value
@@ -80,7 +81,7 @@ function editMatch(e) {
     .then((response) => response.json())
     .then((matchData) => {
         console.log(matchData)
-        return matchData.json();
+        // return matchData.json();
         // Need to call edit
         // matchInstance = new Match(matchData);
         // matchData = Match.edit
@@ -88,47 +89,3 @@ function editMatch(e) {
     })
     .catch((error) => console.log(error))
 }
-    
-
-
-
-// Delete a Match.
-// function deleteMatch(e) {
-//     e.preventDefault();
-//     matchId = e.target.dataset.id;
-
-//     fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, { method: "DELETE" });
-    
-//     if (e.target.className === "delete") {
-//         e.target.parentElement.remove();
-//     }
-
-//     window.alert("Match deleted.")
-// }
-
-// Highlight a Match.
-// function highlight(e) {
-//     console.log(e)
-//     // debugger
-//     e.preventDefault();
-//     const content = this.nextElementSibling;
-
-//     if (content.getAttribute("class") === "") {
-//         content.setAttribute("class", "highlighted");
-//         content.setAttribute("style", "color: brown");
-//     } else {
-//         content.setAttribute("class", "");
-//         content.setAttribute("style", "");
-//     }
-// }
-
-// // Total Failures Below :)
-
-// document.getElementById("all-matches").addEventListener("click", highlight);
-
-// const highlightButtons = document.querySelectorAll(".highlight")
-// highlightButtons.forEach(function(button) {
-    //     button.addEventListener("click", highlight)
-// })
-
-// document.getElementById("all-matches").addEventListener("click", deleteMatch)
