@@ -28,7 +28,7 @@ class Match {
         matchDiv.innerHTML = `
             <button class="highlight btn-info btn-sm" data-set-id="${this.id}">highlight</button>
             
-            <a class=""> ${this.date} - ${this.title.bold()} - ${this.notes}</a>
+            <a id="matchText" class=""> ${this.date} - ${this.title.bold()} - ${this.notes}</a>
             
             <button class="edit btn-info btn-sm" data-set-id="${this.id}" type="button" data-toggle="modal" data-target="#editModal">edit</button>
             
@@ -39,9 +39,9 @@ class Match {
 
         // Below is jQuery/Boostrap to add the data-id to the modal inputs. 
         $('#editModal').on('show.bs.modal', function (event) {
-            let button = $(event.relatedTarget);
+            // let button = $(event.relatedTarget);
             let id = event.relatedTarget.dataset.setId;
-            console.log(id)
+            // console.log(id)
             let modal = $(this);
             modal.find('.modal-body form').attr("data-id", id);
             modal.find(':submit').attr("data-toggle", "modal");
@@ -55,7 +55,8 @@ class Match {
         const highlightButton = document.getElementsByClassName("highlight");
         highlightButton[0].addEventListener("click", this.highlight);
 
-        // const editSubmitButton = document.getElementById("edit-match-form");editSubmitButton.addEventListener("submit", this.edit);
+        const editSubmitButton = document.getElementById("edit-match-form");
+        editSubmitButton.addEventListener("submit", this.edit);
         
         const deleteButton = document.getElementsByClassName("delete");
         deleteButton[0].addEventListener("click", this.delete);
@@ -65,37 +66,40 @@ class Match {
         return false; // Prevents page refresh.
     }    
 
-    // edit(e) {
-    //     e.preventDefault();
-    //     console.log(e.target)
-    //     console.log(e.target.dataset.id)
-    //     const matchId = e.target.dataset.id;
-    //     debugger
-    //     const date = document.getElementById("date").value
-    //     const title = document.getElementById("title").value
-    //     const notes = document.getElementById("notes").value
+    edit(e) {
+        e.preventDefault();
+        console.log(e.target.dataset.id)
+        
+        const matchId = e.target.dataset.id;
+        const date = document.getElementById("date").value
+        const title = document.getElementById("title").value
+        const notes = document.getElementById("notes").value
+        
+        fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                match: {
+                    id: matchId,
+                    date: date,
+                    title: title,
+                    notes: notes,
+                    player_id: player_id
+                }
+            })
+        })
+        .then((response) => response.json())
+        .then((matchData) => {
+            console.log(matchData)
+            const matchText = document.getElementById("matchText")
+            // debugger
+            matchText.innerHTML = `${matchData.date} - ${matchData.title.bold()} - ${matchData.notes}`
 
-        // fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, {
-        //     method: "PUT",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         match: {
-        //             id: matchId,
-        //             date: date,
-        //             title: title,
-        //             notes: notes,
-        //             player_id: player_id
-        //         }
-        //     })
-        // })
-        // .then((response) => response.json())
-        // .then((matchData) => {
-        //     console.log(matchData)
-        // })
-        // .catch((error) => console.log(error))
-    // }
+        })
+        .catch((error) => console.log(error))
+    }
 
     delete(e) {
         e.preventDefault();

@@ -53,39 +53,39 @@ function newMatch(e) {
 
 
 // Edit a Match.
-document.getElementById("edit-match-form").addEventListener("submit", editMatch);
-function editMatch(e) {
-    e.preventDefault();
-    console.log(e.target.dataset.id);
-    debugger
-    const matchId = e.target.dataset.id;
-    const date = document.getElementById("date").value
-    const title = document.getElementById("title").value
-    const notes = document.getElementById("notes").value
+// document.getElementById("edit-match-form").addEventListener("submit", editMatch);
 
-    fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            match: {
-                id: matchId,
-                date: date,
-                title: title,
-                notes: notes,
-                player_id: player_id
-            }
-        })
-    })
-    .then((response) => response.json())
-    .then((matchData) => {
-        console.log(matchData)
-        // return matchData.json();
-        // Need to call edit
-        // matchInstance = new Match(matchData);
-        // matchData = Match.edit
-        // matchData.edit();
-    })
-    .catch((error) => console.log(error))
-}
+// function editMatch(e) {
+//     e.preventDefault();
+
+//     const matchId = e.target.dataset.id;
+//     const date = document.getElementById("date").value
+//     const title = document.getElementById("title").value
+//     const notes = document.getElementById("notes").value
+
+//     fetch(`http://localhost:3000/api/players/${player_id}/matches/${matchId}`, {
+//         method: "PUT",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//             match: {
+//                 id: matchId,
+//                 date: date,
+//                 title: title,
+//                 notes: notes,
+//                 player_id: player_id
+//             }
+//         })
+//     })
+//     .then((response) => response.json())
+//     .then((matchData) => {
+//         console.log(matchData)
+//         // return matchData.json();
+//         // Need to call edit
+//         // matchInstance = new Match(matchData);
+//         // matchData = Match.edit
+//         // matchData.edit();
+//     })
+//     .catch((error) => console.log(error))
+// }
