@@ -25,24 +25,36 @@ class Match {
         matchDiv.setAttribute("id", this.id);
 
         // Create content for each match.
-        const highlightButton = document.createElement("button");
-        highlightButton.innerHTML = "highlight";
-        highlightButton.className = "highlight";
-        highlightButton.setAttribute("data-id", this.id);
-        highlightButton.addEventListener("click", highlight);
+        matchDiv.innerHTML = `
+            <button class="highlight btn-info btn-sm" data-set-id="${this.id}">highlight</button>
+            
+            <a class=""> ${this.date} - ${this.title.bold()} - ${this.notes}</a>
+            
+            <button class="edit btn-info btn-sm" data-set-id="${this.id}" type="button" data-toggle="modal" data-target="#editModal">edit</button>
+            
+            <button class="delete btn-info btn-sm" data-set-id="${this.id}">delete</button>
+            
+            <br>
+        `
+        
+        
+        // highlightButton.innerHTML = "highlight";
+        // highlightButton.className = "highlight";
+        // highlightButton.setAttribute("data-id", this.id);
+        
 
-        const matchItem = document.createElement("a");
-        matchItem.setAttribute("class", "")
-        const brEl = document.createElement("br");
+        // const matchItem = document.createElement("a");
+        // matchItem.setAttribute("class", "")
+        // const brEl = document.createElement("br");
 
-        const editButton = document.createElement("button");
-        editButton.innerHTML = "edit";
-        editButton.className = "edit";
-        editButton.setAttribute("data-id", this.id);
-        editButton.setAttribute("type", "button");
-        editButton.setAttribute("class", "btn btn-info btn-lg");
-        editButton.setAttribute("data-toggle", "modal");
-        editButton.setAttribute("data-target", "#editModal");
+        // const editButton = document.createElement("button");
+        // editButton.innerHTML = "edit";
+        // editButton.className = "edit";
+        // editButton.setAttribute("data-id", this.id);
+        // editButton.setAttribute("type", "button");
+        // editButton.setAttribute("class", "btn btn-info btn-lg");
+        // editButton.setAttribute("data-toggle", "modal");
+        // editButton.setAttribute("data-target", "#editModal");
 
         // Below is jQuery/Boostrap to add the data-id to the modal inputs. 
         $('#editModal').on('show.bs.modal', function (event) {
@@ -54,24 +66,29 @@ class Match {
             modal.find(':submit').attr("data-target", "#editModal")
         })
 
-        const deleteButton = document.createElement("button");
-        deleteButton.innerHTML = "delete";
-        deleteButton.className = "delete";
-        deleteButton.setAttribute("data-id", this.id);
-        deleteButton.addEventListener("click", this.delete);
-        
-        // Format list item.
-        matchItem.innerHTML = ` ${this.date} - ${this.title.bold()} - ${this.notes}`;
-
-        // InsertBefore into allMatchesDiv to have newest on top.
         allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.childNodes[0]);
 
+        const highlightButton = document.getElementsByClassName("highlight");
+        highlightButton[0].addEventListener("click", this.highlight);
+
+        const deleteButton = document.getElementsByClassName("delete");
+        deleteButton[0].addEventListener("click", this.delete);
+        // deleteButton.innerHTML = "delete";
+        // deleteButton.className = "delete";
+        // deleteButton.setAttribute("data-id", this.id);
+        
+        // Format list item.
+        // matchItem.innerHTML = ` ${this.date} - ${this.title.bold()} - ${this.notes}`;
+
+        // InsertBefore into allMatchesDiv to have newest on top.
+        // allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.childNodes[0]);
+
         // Append elements into matchDiv.
-        matchDiv.appendChild(highlightButton);
-        matchDiv.appendChild(matchItem);
-        matchDiv.appendChild(editButton);
-        matchDiv.appendChild(deleteButton);
-        matchDiv.appendChild(brEl);
+        // matchDiv.appendChild(highlightButton);
+        // matchDiv.appendChild(matchItem);
+        // matchDiv.appendChild(editButton);
+        // matchDiv.appendChild(deleteButton);
+        // matchDiv.appendChild(brEl);
 
         const newMatchForm = document.getElementById("new-match-form");
         newMatchForm.reset(); // Clears the form inputs.
@@ -93,6 +110,19 @@ class Match {
         }
 
         window.alert("Match deleted.")
+    }
+
+    highlight(e) {
+        e.preventDefault();
+        const content = this.nextElementSibling;
+
+        if (content.getAttribute("class") === "") {
+            content.setAttribute("class", "highlighted");
+            content.setAttribute("style", "color: brown");
+        } else {
+            content.setAttribute("class", "");
+            content.setAttribute("style", "");
+        }
     }
     
 }

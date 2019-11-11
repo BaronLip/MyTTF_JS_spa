@@ -107,19 +107,20 @@ function editMatch(e) {
 // }
 
 // Highlight a Match.
-function highlight(e) {
-    console.log(e)
-    e.preventDefault();
-    const content = e.target.nextSibling;
+// function highlight(e) {
+//     console.log(e)
+//     // debugger
+//     e.preventDefault();
+//     const content = this.nextElementSibling;
 
-    if (content.getAttribute("class") === "") {
-        content.setAttribute("class", "highlighted");
-        content.setAttribute("style", "color: brown");
-    } else {
-        content.setAttribute("class", "");
-        content.setAttribute("style", "");
-    }
-}
+//     if (content.getAttribute("class") === "") {
+//         content.setAttribute("class", "highlighted");
+//         content.setAttribute("style", "color: brown");
+//     } else {
+//         content.setAttribute("class", "");
+//         content.setAttribute("style", "");
+//     }
+// }
 
 // // Total Failures Below :)
 
