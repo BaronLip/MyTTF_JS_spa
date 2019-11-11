@@ -7056,3 +7056,296 @@ Unpermitted parameter: :id
 Completed 200 OK in 125ms (Views: 9.7ms | ActiveRecord: 9.0ms)
 
 
+Started PUT "/api/players/1/matches/34" for ::1 at 2019-11-10 18:10:22 -0600
+Processing by Api::MatchesController#update as */*
+  Parameters: {"match"=>{"id"=>"34", "date"=>"2019-11-10", "title"=>"Let's see if the function is called. ", "notes"=>"Call the function.", "player_id"=>1}, "player_id"=>"1", "id"=>"34"}
+  [1m[36mMatch Load (1.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+Unpermitted parameter: :id
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mPlayer Load (1.1ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mMatch Update (1.3ms)[0m  [1m[33mUPDATE "matches" SET "notes" = $1, "title" = $2, "updated_at" = $3 WHERE "matches"."id" = $4[0m  [["notes", "Call the function."], ["title", "Let's see if the function is called. "], ["updated_at", "2019-11-11 00:10:22.789142"], ["id", 34]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+Completed 200 OK in 111ms (Views: 7.1ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 18:15:26 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (4.5ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 99ms (Views: 69.8ms | ActiveRecord: 5.8ms)
+
+
+Started PUT "/api/players/1/matches/34" for ::1 at 2019-11-10 18:15:45 -0600
+Processing by Api::MatchesController#update as */*
+  Parameters: {"match"=>{"id"=>"34", "date"=>"2019-11-10", "title"=>"Whatever", "notes"=>"More stuff here.", "player_id"=>1}, "player_id"=>"1", "id"=>"34"}
+  [1m[36mMatch Load (1.4ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+Unpermitted parameter: :id
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mPlayer Load (3.7ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mMatch Update (1.0ms)[0m  [1m[33mUPDATE "matches" SET "notes" = $1, "title" = $2, "updated_at" = $3 WHERE "matches"."id" = $4[0m  [["notes", "More stuff here."], ["title", "Whatever"], ["updated_at", "2019-11-11 00:15:45.294454"], ["id", 34]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+Completed 200 OK in 103ms (Views: 6.9ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 18:16:27 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (2.1ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (6.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 117ms (Views: 72.8ms | ActiveRecord: 8.1ms)
+
+
+Started PUT "/api/players/1/matches/34" for ::1 at 2019-11-10 18:16:42 -0600
+Processing by Api::MatchesController#update as */*
+  Parameters: {"match"=>{"id"=>"34", "date"=>"2019-11-10", "title"=>"Trying this again.", "notes"=>"Once more.", "player_id"=>1}, "player_id"=>"1", "id"=>"34"}
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+Unpermitted parameter: :id
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mPlayer Load (1.0ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mMatch Update (4.0ms)[0m  [1m[33mUPDATE "matches" SET "notes" = $1, "title" = $2, "updated_at" = $3 WHERE "matches"."id" = $4[0m  [["notes", "Once more."], ["title", "Trying this again."], ["updated_at", "2019-11-11 00:16:42.291193"], ["id", 34]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+Completed 200 OK in 108ms (Views: 8.5ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 18:38:39 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (1.2ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 93ms (Views: 66.1ms | ActiveRecord: 3.3ms)
+
+
+Started PUT "/api/players/1/matches/34" for ::1 at 2019-11-10 18:38:55 -0600
+Processing by Api::MatchesController#update as */*
+  Parameters: {"match"=>{"id"=>"34", "date"=>"2019-11-10", "title"=>"Edit Title", "notes"=>"Edit notes.", "player_id"=>1}, "player_id"=>"1", "id"=>"34"}
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+Unpermitted parameter: :id
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mPlayer Load (1.0ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mMatch Update (1.2ms)[0m  [1m[33mUPDATE "matches" SET "notes" = $1, "title" = $2, "updated_at" = $3 WHERE "matches"."id" = $4[0m  [["notes", "Edit notes."], ["title", "Edit Title"], ["updated_at", "2019-11-11 00:38:55.441075"], ["id", 34]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+Completed 200 OK in 107ms (Views: 7.7ms | ActiveRecord: 6.8ms)
+
+
+Started DELETE "/api/players/1/matches/34" for ::1 at 2019-11-10 18:40:49 -0600
+Processing by Api::MatchesController#destroy as */*
+  Parameters: {"player_id"=>"1", "id"=>"34"}
+  [1m[36mMatch Load (0.9ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:30
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:31
+  [1m[36mMatch Destroy (0.9ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = $1[0m  [["id", 34]]
+  ↳ app/controllers/api/matches_controller.rb:31
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:31
+Completed 200 OK in 50ms (Views: 4.8ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 18:40:58 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (60.5ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (4.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 170ms (Views: 68.8ms | ActiveRecord: 64.5ms)
+
+
+Started PUT "/api/players/1/matches/31" for ::1 at 2019-11-10 18:41:16 -0600
+Processing by Api::MatchesController#update as */*
+  Parameters: {"match"=>{"id"=>"31", "date"=>"", "title"=>"Edit this title", "notes"=>"Edit notes here. ", "player_id"=>1}, "player_id"=>"1", "id"=>"31"}
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+Unpermitted parameter: :id
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mPlayer Load (1.0ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mMatch Update (1.1ms)[0m  [1m[33mUPDATE "matches" SET "notes" = $1, "title" = $2, "date" = $3, "updated_at" = $4 WHERE "matches"."id" = $5[0m  [["notes", "Edit notes here. "], ["title", "Edit this title"], ["date", ""], ["updated_at", "2019-11-11 00:41:16.718926"], ["id", 31]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+Completed 200 OK in 124ms (Views: 11.1ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 18:41:32 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (20.9ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 102ms (Views: 53.4ms | ActiveRecord: 21.9ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 18:50:55 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (1.3ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (3.8ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 83ms (Views: 49.6ms | ActiveRecord: 6.2ms)
+
+
+Started PUT "/api/players/1/matches/31" for ::1 at 2019-11-10 18:51:10 -0600
+Processing by Api::MatchesController#update as */*
+  Parameters: {"match"=>{"id"=>"31", "date"=>"2019-11-10", "title"=>"This is an edit.", "notes"=>"Here are notes.", "player_id"=>1}, "player_id"=>"1", "id"=>"31"}
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+Unpermitted parameter: :id
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mPlayer Load (1.0ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mMatch Update (1.2ms)[0m  [1m[33mUPDATE "matches" SET "notes" = $1, "title" = $2, "date" = $3, "updated_at" = $4 WHERE "matches"."id" = $5[0m  [["notes", "Here are notes."], ["title", "This is an edit."], ["date", "2019-11-10"], ["updated_at", "2019-11-11 00:51:10.732726"], ["id", 31]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+Completed 200 OK in 111ms (Views: 10.6ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 18:51:29 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (1.7ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 95ms (Views: 68.9ms | ActiveRecord: 2.7ms)
+
+
+Started PUT "/api/players/1/matches/31" for ::1 at 2019-11-10 19:29:44 -0600
+Processing by Api::MatchesController#update as */*
+  Parameters: {"match"=>{"id"=>"31", "date"=>"2019-11-10", "title"=>"This is a Title.", "notes"=>"asdfasdfasdf", "player_id"=>1}, "player_id"=>"1", "id"=>"31"}
+  [1m[36mMatch Load (1.3ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:22
+Unpermitted parameter: :id
+  [1m[35m (3.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mPlayer Load (1.2ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[36mMatch Update (3.0ms)[0m  [1m[33mUPDATE "matches" SET "notes" = $1, "title" = $2, "updated_at" = $3 WHERE "matches"."id" = $4[0m  [["notes", "asdfasdfasdf"], ["title", "This is a Title."], ["updated_at", "2019-11-11 01:29:44.270888"], ["id", 31]]
+  ↳ app/controllers/api/matches_controller.rb:25
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/matches_controller.rb:25
+Completed 200 OK in 165ms (Views: 10.2ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 19:29:51 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (1.3ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (12.7ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 304ms (Views: 255.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 20:32:28 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (4.4ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 86ms (Views: 57.5ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 20:32:43 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (19.0ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.7ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 105ms (Views: 58.3ms | ActiveRecord: 20.7ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 20:48:01 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (1.3ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 87ms (Views: 58.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 20:50:23 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (4.3ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 94ms (Views: 55.6ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 20:51:06 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (12.4ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 101ms (Views: 60.0ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 20:51:50 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (2.4ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (17.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 125ms (Views: 77.7ms | ActiveRecord: 19.8ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 20:53:16 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (5.1ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 97ms (Views: 57.5ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/api/players/1" for ::1 at 2019-11-10 20:54:25 -0600
+Processing by Api::PlayersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mPlayer Load (114.8ms)[0m  [1m[34mSELECT  "players".* FROM "players" WHERE "players"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/players_controller.rb:10
+  [1m[36mMatch Load (1.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."player_id" = $1[0m  [["player_id", 1]]
+  ↳ app/models/player.rb:5
+Completed 200 OK in 208ms (Views: 60.6ms | ActiveRecord: 116.3ms)
+
+

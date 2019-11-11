@@ -78,9 +78,13 @@ function editMatch(e) {
         })
     })
     .then((response) => response.json())
-    .then((match) => {
-        // console.log(match)
-        Match.edit(match)
+    .then((matchData) => {
+        console.log(matchData)
+        return matchData.json();
+        // Need to call edit
+        // matchInstance = new Match(matchData);
+        // matchData = Match.edit
+        // matchData.edit();
     })
     .catch((error) => console.log(error))
 }

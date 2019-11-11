@@ -1,33 +1,34 @@
 class Match {
+    
     static all = []
 
-    constructor(matchesData) {
-        // console.log(matchesData)
-        this.player_id = matchesData.player_id;
-        this.date = matchesData.date;
-        this.title = matchesData.title;
-        this.notes = matchesData.notes;
+    constructor(matchData) {
+        console.log(matchData)
+        this.id = matchData.id
+        this.player_id = matchData.player_id;
+        this.date = matchData.date;
+        this.title = matchData.title;
+        this.notes = matchData.notes;
 
         Match.all.push(this);
 
-        this.renderMatches(matchesData);
+        this.renderMatch();
     }
 
-    renderMatches(matchesData) {
-        console.log(matchesData)
+    renderMatch() {
         // Locate all-matches div.
         const allMatchesDiv = document.getElementById("all-matches")
 
         // Create wrapper div for each match.
         const matchDiv = document.createElement("div");
-        matchDiv.setAttribute("data-id", matchesData.id);
-        matchDiv.setAttribute("id", matchesData.id);
+        matchDiv.setAttribute("data-id", this.id);
+        matchDiv.setAttribute("id", this.id);
 
         // Create content for each match.
         const highlightButton = document.createElement("button");
         highlightButton.innerHTML = "highlight";
         highlightButton.className = "highlight";
-        highlightButton.setAttribute("data-id", matchesData.id);
+        highlightButton.setAttribute("data-id", this.id);
         highlightButton.addEventListener("click", highlight);
 
         const matchItem = document.createElement("a");
@@ -37,7 +38,7 @@ class Match {
         const editButton = document.createElement("button");
         editButton.innerHTML = "edit";
         editButton.className = "edit";
-        editButton.setAttribute("data-id", matchesData.id);
+        editButton.setAttribute("data-id", this.id);
         editButton.setAttribute("type", "button");
         editButton.setAttribute("class", "btn btn-info btn-lg");
         editButton.setAttribute("data-toggle", "modal");
@@ -56,11 +57,11 @@ class Match {
         const deleteButton = document.createElement("button");
         deleteButton.innerHTML = "delete";
         deleteButton.className = "delete";
-        deleteButton.setAttribute("data-id", matchesData.id);
+        deleteButton.setAttribute("data-id", this.id);
         deleteButton.addEventListener("click", deleteMatch);
         
         // Format list item.
-        matchItem.innerHTML = ` ${matchesData.date} - ${matchesData.title.bold()} - ${matchesData.notes}`;
+        matchItem.innerHTML = ` ${this.date} - ${this.title.bold()} - ${this.notes}`;
 
         // InsertBefore into allMatchesDiv to have newest on top.
         allMatchesDiv.insertBefore(matchDiv, allMatchesDiv.childNodes[0]);
@@ -77,8 +78,8 @@ class Match {
         return false; // Prevents page refresh.
     }    
 
-    edit(matchData) {
-        console.log(matchData)
+    static edit() {
+        console.log("I'm hitting this function!")
     }
     
     // new(e) {
