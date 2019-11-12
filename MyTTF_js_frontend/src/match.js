@@ -120,5 +120,4 @@ class Match {
             content.setAttribute("style", "");
         }
     }
-    
 }

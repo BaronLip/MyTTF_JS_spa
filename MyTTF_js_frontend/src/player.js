@@ -18,40 +18,38 @@ class Player {
         Player.all.push(this);
 
         this.render()
-
     }
-
-    // // May not need this.
-    // matches() {
-    //     Match.all.filter(match => match.player.username === this.username)
-    // }
 
     render() {
         const profileContainer = document.getElementById("profile-container")
-
+        
         profileContainer.innerHTML = `
-            <div class="row">
-            <div class="col-sm-4 profile-info">
-                <h3>Profile:</h3>
-                <p>name: ${this.username}</p>
-                <p>age: ${this.age}</p>
-                <p>gender: ${this.gender}</p>
-                <p>hand: ${this.hand}</p>
-            </div>
-            <div class="col-sm-4 profile-stats">
-                <h3>Stats:</h3>
-                <p>wins: ${this.wins}</p>
-                <p>losses: ${this.losses}</p>
-                <p>rating: ${this.rating}</p>
-                <p>style: ${this.style}</p>
-            </div>
-            <div class="col-sm-4 profile-equip">
-                <h3>Equipment:</h3>
-                <p>blade: ${this.blade}</p>
-                <p>red rubber: ${this.red_rubber}</p>
-                <p>black rubber: ${this.black_rubber}</p>
-            </div>
+        <div class="row">
+        <div class="col-sm-4 profile-info">
+        <h3>Profile:</h3>
+        <p>name: ${this.username}</p>
+        <p>age: ${this.age}</p>
+        <p>gender: ${this.gender}</p>
+        <p>hand: ${this.hand}</p>
+        </div>
+        <div class="col-sm-4 profile-stats">
+        <h3>Stats:</h3>
+        <p>wins: ${this.wins}</p>
+        <p>losses: ${this.losses}</p>
+        <p>rating: ${this.rating}</p>
+        <p>style: ${this.style}</p>
+        </div>
+        <div class="col-sm-4 profile-equip">
+        <h3>Equipment:</h3>
+        <p>blade: ${this.blade}</p>
+        <p>red rubber: ${this.red_rubber}</p>
+        <p>black rubber: ${this.black_rubber}</p>
+        </div>
         </div>
         `
     }
 }
+// // May use in the future.
+// matches() {
+//     Match.all.filter(match => match.player.username === this.username)
+// }
