@@ -1,7 +1,7 @@
 # README
 
 **OVERVIEW:**
-This project is a learning tool for combining Javascript frontend and a Rails backend. The current example of this app is intended to be a feature within a larger app. This is a view into one Player and does not start from the very beginning with creating a player. The Player is seeded. 
+This project is a learning tool for combining JavaScript frontend and a Rails backend. The current example of this app is intended to be a feature within a larger app. This is a view into one Player and does not start from the very beginning with creating a player. The Player is seeded. 
 
 **SPECIFICATIONS:**
 - Rails 5.2.3.
