@@ -44,10 +44,22 @@ class Player {
         <p>blade: ${this.blade}</p>
         <p>red rubber: ${this.red_rubber}</p>
         <p>black rubber: ${this.black_rubber}</p>
+        <button id="like">Like</button>
+        <p id="count">0</p>
         </div>
         </div>
         `
+        const button = document.getElementById("like")
+        button.addEventListener("click", this.like)
     }
+    
+
+    like() {
+        const number = document.getElementById("count")
+        const count = parseInt(number.innerHTML) + 1
+        number.innerHTML = count 
+    }
+
 }
 // // May use in the future.
 // matches() {
