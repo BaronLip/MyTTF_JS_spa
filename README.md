@@ -30,3 +30,11 @@ This project is a learning tool for combining JavaScript frontend and a Rails ba
     2. Edit
     3. Delete
     4. Highlight
+
+**INSTRUCTIONS:**
+1. Download directory.
+2. Navigate into MyTTF_rails_backend via terminal.
+    - ```$ rails server```
+3. Navigate to MyTTF_js_frontend via terminal.
+    - open index.html in your browser.
+4. Have fun!
