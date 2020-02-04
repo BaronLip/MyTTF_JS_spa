@@ -1,15 +1,17 @@
 # README
 
 **OVERVIEW:**
-This project is a learning tool for combining JavaScript frontend and a Rails backend. The current example of this app is intended to be a feature within a larger app. This is a view into one Player and does not start from the very beginning with creating a player. The Player is seeded. 
+This project is a learning tool for combining JavaScript frontend and a Rails API backend. The current example of this app is intended to be a feature within a larger app. This is a view into one Player and does not start from the very beginning with creating a player. The Player is seeded. 
 
 **SPECIFICATIONS:**
+- React 16.12.0
 - Rails 5.2.3.
 - PostgreSQL database.
     1. $ bundle install
     2. $ rails db:create
     3. $ rails db:migrate
     4. $ rails db:seed
+- Bootstrap CDN
 
 
 **BACKEND FEATURES:**
@@ -34,7 +36,7 @@ This project is a learning tool for combining JavaScript frontend and a Rails ba
 **INSTRUCTIONS:**
 1. Download directory.
 2. Navigate into MyTTF_rails_backend via terminal.
-    - ```$ rails server```
+    - ```rails server```
 3. Navigate to MyTTF_js_frontend via terminal.
     - open index.html in your browser.
 4. Have fun!
